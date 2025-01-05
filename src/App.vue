@@ -11,6 +11,12 @@ import FlipItem from "./components/FlipItem.vue";
 
 const items = ref([
   {
+    title: "Описание проекта",
+    text: "Дизайн-код Бобровского сельского поселения – это уникальная система визуальной идентичности, которая подчёркивает природное богатство и культурное наследие региона. Основные элементы включают герб, фирменные цвета и паттерны, создающие цельный и узнаваемый образ поселения.",
+    cover: "desc-long.jpg",
+    image: "desc.jpg",
+  },
+  {
     title: "Герб посёлка Бобровский",
     text: "Герб отражает ключевые особенности территории: бобёр символизирует трудолюбие и созидание, деревья – лесные богатства и устойчивость, а река – важность водных ресурсов для жизни поселения. Цветовая гамма герба включает серебряный (чистота и гармония), зелёный (природа и развитие) и голубой (реки и ясное небо).",
     cover: "emblem-long.jpg",
@@ -43,21 +49,20 @@ onMounted(() => {
     <h1 class="main-title">Дизайн-код посёлка Бобровский</h1>
     <p class="main-text">Бобровский – праздник начинается здесь!</p>
     <div class="main-rows">
-      <div class="main-rows-item item" data-aos="fade-left">
-        <!-- <video id="player" src="/video.mp4" controls></video> -->
-        <div class="item-info">
-          <h2 class="title-2 item-title">Описание проекта</h2>
-          <p class="item-text">Дизайн-код Бобровского сельского поселения – это уникальная система визуальной
-            идентичности, которая подчёркивает природное богатство и культурное наследие региона. Основные элементы
-            включают герб, фирменные цвета и паттерны, создающие цельный и узнаваемый образ поселения.</p>
-        </div>
-      </div>
       <div class="main-rows-item item" v-for="(item, i) in items" :data-aos="i % 2 === 0 ? 'fade-left' : 'fade-right'">
         <FlipItem :cover="item.cover" :image="item.image" />
         <div class="item-info">
           <h2 class="title-2 item-title">{{ item.title }}</h2>
           <p class="item-text" v-html="item.text" />
         </div>
+      </div>
+      <div class="item typography" data-aos="fade-right">
+        <h2 class="title-2 item-title">Использованные шрифты</h2>
+        <p class="item-text">
+          В проекте используется шрифт Open Sans для основного текста и заголовков.
+          Open Sans - современный шрифт без засечек, обеспечивающий отличную читаемость
+          как в крупных заголовках, так и в мелком тексте.
+        </p>
       </div>
     </div>
   </main>
@@ -129,6 +134,19 @@ onMounted(() => {
   }
 }
 
+.typography {
+  background: rgba(100, 149, 237, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(100, 149, 237, 0.2);
+  box-shadow: 0 4px 30px rgba(100, 149, 237, 0.15);
+
+  .item-title {
+    margin-bottom: 1rem;
+  }
+}
+
 @media (max-width: 1000px) {
   .footer {
     margin-top: 2rem;
@@ -173,6 +191,10 @@ onMounted(() => {
         }
       }
     }
+  }
+
+  .typography {
+    padding: 1.5rem;
   }
 }
 </style>
