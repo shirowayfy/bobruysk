@@ -1,6 +1,5 @@
 <script setup>
 import AOS from "aos";
-import Plyr from 'plyr';
 
 import { onMounted, ref } from "vue";
 
@@ -37,14 +36,52 @@ const items = ref([
 ]);
 
 onMounted(() => {
-  const player = new Plyr('#player');
-
 
   AOS.init();
+
+  // Common particle config for snowfall effect
+  const snowConfig = {
+    particles: {
+      number: { value: 250 }, // Increased number of particles
+      color: { value: '#457B9D' }, // White color for snow
+      shape: {
+        type: 'circle',
+        stroke: { width: 0 }
+      },
+      size: {
+        value: 3,
+        random: true,
+        min: 1,
+        max: 5
+      },
+      move: {
+        enable: true,
+        speed: 1, // Slower speed
+        direction: 'bottom',
+        straight: false,
+        out_mode: "out",
+        random: true,
+        bounce: false
+      },
+      opacity: {
+        value: 0.8,
+        random: true,
+        min: 0.4,
+        max: 0.8
+      }
+    }
+  };
+
+  // Initialize particles on both sides with snow config
+  particlesJS('particles-left', snowConfig);
+  particlesJS('particles-right', snowConfig);
 });
 </script>
 
 <template>
+  <div id="particles-left" class="particles-side particles-left"></div>
+  <div id="particles-right" class="particles-side particles-right"></div>
+
   <main class="main">
     <h1 class="main-title">Дизайн-код посёлка Бобровский</h1>
     <p class="main-text">Бобровский – праздник начинается здесь!</p>
@@ -147,6 +184,22 @@ onMounted(() => {
   }
 }
 
+.particles-side {
+  position: fixed;
+  top: 0;
+  width: 150px;
+  height: 100vh;
+  z-index: -1;
+}
+
+.particles-left {
+  left: 0;
+}
+
+.particles-right {
+  right: 0;
+}
+
 @media (max-width: 1000px) {
   .footer {
     margin-top: 2rem;
@@ -196,6 +249,10 @@ onMounted(() => {
 
   .typography {
     padding: 1.5rem;
+  }
+
+  .particles-side {
+    width: 50px;
   }
 }
 </style>
