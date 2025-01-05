@@ -130,8 +130,16 @@ onMounted(() => {
     max-width: 768px;
     margin: 0 auto;
     text-align: center;
-    color: var(--green-color);
     font-size: 24px;
+    background: linear-gradient(90deg,
+        #457B9D 0%,
+        #A8DADC 50%,
+        #457B9D 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gradient 8s linear infinite;
   }
 
   &-rows {
@@ -253,6 +261,16 @@ onMounted(() => {
 
   .particles-side {
     width: 50px;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: -200% center;
   }
 }
 </style>
