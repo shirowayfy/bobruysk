@@ -165,6 +165,19 @@ onMounted(() => {
       text-align: left;
     }
 
+    .item-info {
+      gap: .5rem;
+    }
+
+    .item-title {
+      font-size: 18px;
+    }
+
+    .item-text {
+      font-size: 14px;
+    }
+
+
     &-rows {
       margin-top: 2rem;
       gap: 3rem;
@@ -172,18 +185,6 @@ onMounted(() => {
       &-item {
         grid-template-columns: 1fr;
         height: auto;
-
-        .item-info {
-          gap: .5rem;
-        }
-
-        .item-title {
-          font-size: 18px;
-        }
-
-        .item-text {
-          font-size: 14px;
-        }
 
         .plyr,
         img {
